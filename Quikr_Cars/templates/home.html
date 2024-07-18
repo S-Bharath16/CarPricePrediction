@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin-bottom: 25px;
+            color: #333333;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555555;
+            font-weight: bold;
+        }
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-container input[type="text"], .input-container input[type="number"], .input-container select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .input-container input[type="text"]:focus, .input-container input[type="number"]:focus, .input-container select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+            outline: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Car Price Prediction</h1>
+        <form action="/result/" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <div class="input-container">
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <label for="company">Company:</label>
+            <div class="input-container">
+                <input type="text" id="company" name="company" required>
+            </div>
+
+            <label for="year">Year:</label>
+            <div class="input-container">
+                <input type="number" id="year" name="year" required>
+            </div>
+
+            <label for="kms_driven">Kms Driven:</label>
+            <div class="input-container">
+                <input type="number" id="kms_driven" name="kms_driven" required>
+            </div>
+
+            <label for="fuel_type">Fuel Type:</label>
+            <div class="input-container">
+                <select id="fuel_type" name="fuel_type" required>
+                    <option value="">Select Fuel Type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
+
